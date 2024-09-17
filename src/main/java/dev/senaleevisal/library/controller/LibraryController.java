@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/library/library")
 public class LibraryController {
 
+    private final LibraryService libraryService;
+
     @Autowired
-    private LibraryService libraryService;
+    public LibraryController(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
 
     @PostMapping("/add")
     public ResponseBody addLibrary(@Valid @RequestBody Library library) {

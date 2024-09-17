@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class LibraryServiceIMPL implements LibraryService {
 
-    @Autowired
-    private LibraryRepository libraryRepository;
+    private final LibraryRepository libraryRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    private ModelMapper modelMapper;
+    public LibraryServiceIMPL(LibraryRepository libraryRepository, ModelMapper modelMapper) {
+        this.libraryRepository = libraryRepository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public Library addLibrary(Library library) {

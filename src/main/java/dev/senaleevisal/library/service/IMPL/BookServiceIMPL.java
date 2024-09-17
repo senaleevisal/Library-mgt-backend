@@ -14,11 +14,15 @@ import java.util.Optional;
 @Service
 public class BookServiceIMPL implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
-    private ModelMapper modelMapper;
+    public BookServiceIMPL(BookRepository bookRepository, ModelMapper modelMapper) {
+        this.bookRepository = bookRepository;
+        this.modelMapper = modelMapper;
+    }
+
 
     @Override
     public Book addBook(Book book) {

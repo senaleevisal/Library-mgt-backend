@@ -14,8 +14,12 @@ import java.util.Map;
 @RequestMapping("/api/library/user")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/register")
     public ResponseBody RegisterUser(@Valid @RequestBody User user){

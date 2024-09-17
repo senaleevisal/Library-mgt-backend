@@ -11,11 +11,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceIMPL implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final ModelMapper modalMapper;
 
     @Autowired
-    ModelMapper modalMapper;
+    public UserServiceIMPL(UserRepository userRepository, ModelMapper modalMapper) {
+        this.userRepository = userRepository;
+        this.modalMapper = modalMapper;
+    }
 
     @Override
     public boolean RegisterUser(User user) {
